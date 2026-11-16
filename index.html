@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilha Prática: Geometria Sona, Teorema de Euler e Caneta 3D</title>
+    <style>
+        :root {
+            --primary: #8b4513;
+            --secondary: #d2691e;
+            --accent: #f4a460;
+            --youtube: #ff0000;
+            --dark: #1a1a1a;
+            --light: #fdfbf7;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2em;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .video-box {
+            background: #fff5f5;
+            border: 2px solid var(--youtube);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 12px rgba(255,0,0,0.08);
+        }
+
+        .video-icon {
+            font-size: 3em;
+            color: var(--youtube);
+            flex-shrink: 0;
+        }
+
+        .video-info h3 {
+            margin: 0 0 8px 0;
+            color: #cc0000;
+        }
+
+        .video-btn {
+            display: inline-block;
+            background-color: var(--youtube);
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .video-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border-left: 6px solid var(--secondary);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-title {
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--primary);
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        .compare-table th, .compare-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .compare-table th {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .compare-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .formula-box {
+            background-color: #fff8dc;
+            border: 2px dashed var(--secondary);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #8b0000;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .interactive-calc {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #b0c4de;
+            margin-top: 15px;
+        }
+
+        .interactive-calc input {
+            width: 70px;
+            padding: 8px;
+            margin: 5px 10px;
+            font-size: 1em;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .btn-calc {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .btn-calc:hover {
+            background-color: var(--primary);
+        }
+
+        .result-msg {
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Trilha Interativa: Geometria Sona & Teorema de Euler</h1>
+        <p>Da areia ancestral de Angola à fabricação 3D com a Relação de Euler | 3ª Série do Ensino Médio</p>
+    </header>
+
+    <!-- MATERIAL INSTRUCIONAL - VÍDEO YOUTUBE -->
+    <div class="video-box">
+        <div class="video-icon">▶</div>
+        <div class="video-info">
+            <h3>Material Instrucional em Vídeo</h3>
+            <p><strong>Geometria Sona: técnicas matemáticas do continente africano</strong> | Mwana Afrika Oficina Cultural</p>
+            <p>Assista ao vídeo explicativo sobre a arte dos desenhos contínuos na areia do povo Chokwe antes de iniciar a prática com a caneta 3D.</p>
+            <a href="https://www.youtube.com/watch?v=HQYdqv8oGWQ" target="_blank" class="video-btn">📺 Assistir Vídeo no YouTube</a>
+        </div>
+    </div>
+
+    <!-- ETAPA 1 -->
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-number">1</div>
+            <h2 class="step-title">A Tradição Ancestral: Geometria Sona (Angola)</h2>
+        </div>
+        <p>O povo <strong>Chokwe</strong> (nordeste de Angola) desenvolveu a tradição do <em>Sona</em> (singular: <em>Lusona</em>): desenhos geométricos traçados na areia lisa para transmitir mitos, contos e conhecimentos matemáticos de forma oral.</p>
+        <ul>
+            <li><strong>Técnica:</strong> Uma grade de pontos equidistantes é marcada na areia com as pontas dos dedos.</li>
+            <li><strong>Princípio:</strong> Linhas contínuas e simétricas são traçadas a 45° contornando os pontos sem interromper o movimento ou levantar o dedo.</li>
+            <li><strong>Conceito Matemático:</strong> Antecipação intuitiva da Teoria dos Grafos, combinatória e Circuitos Eulerianos.</li>
+        </ul>
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-number">2</div>
+            <h2 class="step-title">Comparativo Tecnológico: Areia vs. Caneta 3D</h2>
+        </div>
+        <p>Compare as duas tecnologias de criação geométrica:</p>
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Dimensão</th>
+                    <th>Tecnologia Ancestral (Areia)</th>
+                    <th>Tecnologia Atual (Caneta 3D)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Suporte</strong></td>
+                    <td>Areia limpa e alisada (Superfície 2D)</td>
+                    <td>Placa de silicone / Papel Vegetal e Ar (Espaço 3D)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ferramenta</strong></td>
+                    <td>Ponta dos dedos deslizando a 45°</td>
+                    <td>Extrusora aquecida depositando plástico PLA</td>
+                </tr>
+                <tr>
+                    <td><strong>Permanência</strong></td>
+                    <td>Efêmera (apaga-se na areia, fica na memória)</td>
+                    <td>Rígida, física e permanente</td>
+                </tr>
+                <tr>
+                    <td><strong>Geometria</strong></td>
+                    <td>Grafo plano bidimensional</td>
+                    <td>Estrutura poliedral tridimensional (Eixo Z)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ETAPA 3 -->
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-number">3</div>
+            <h2 class="step-title">Mão na Massa: Extrusão 3D da Estrutura</h2>
+        </div>
+        <ol>
+            <li><strong>Base 2D:</strong> Trace o padrão Sona contínuo com a caneta 3D sobre a folha guia.</li>
+            <li><strong>Nós (Vértices):</strong> Em cada cruzamento ou ponto focal, deposite um ponto extra de PLA quente para soldar os nós.</li>
+            <li><strong>Elevação no Ar:</strong> Puxe a caneta verticalmente para cima (Eixo Z) a partir dos vértices da base, conectando-os no topo para formar um sólido tridimensional.</li>
+        </ol>
+    </div>
+
+    <!-- ETAPA 4 -->
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-number">4</div>
+            <h2 class="step-title">Auditoria Matemática: Relação de Euler</h2>
+        </div>
+        <p>Após resfriar a sua estrutura 3D, aplique o Teorema de Euler para verificar a consistência do poliedro convexo:</p>
+
+        <div class="formula-box">
+            VÉRTICES (V) - ARESTAS (A) + FACES (F) = 2
+        </div>
+
+        <div class="interactive-calc">
+            <h3>Calculadora de Verificação de Euler</h3>
+            <label>Vértices (V): <input type="number" id="vertV" value="8"></label>
+            <label>Arestas (A): <input type="number" id="aresA" value="12"></label>
+            <label>Faces (F): <input type="number" id="faceF" value="6"></label>
+            <br>
+            <button class="btn-calc" onclick="calcularEuler()">Verificar Estrutura</button>
+            <div class="result-msg" id="resultadoEuler"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+function calcularEuler() {
+    const v = parseInt(document.getElementById('vertV').value) || 0;
+    const a = parseInt(document.getElementById('aresA').value) || 0;
+    const f = parseInt(document.getElementById('faceF').value) || 0;
+    const res = v - a + f;
+    
+    const divRes = document.getElementById('resultadoEuler');
+    if (res === 2) {
+        divRes.innerHTML = `<span style="color: green;">✓ V - A + F = ${v} - ${a} + ${f} = 2. A relação de Euler foi verificada com sucesso!</span>`;
+    } else {
+        divRes.innerHTML = `<span style="color: red;">✗ V - A + F = ${v} - ${a} + ${f} = ${res}. Atenção: Verifique se a sua estrutura 3D é um poliedro convexo sem furos!</span>`;
+    }
+}
+</script>
+</body>
+</html>
